@@ -42,10 +42,9 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      /* var lightBlue = mathRound(mathRandom() * 10);
-        var colorBlue = "\'hsl(240, " + lightBlue + "%, 50%)\'";
-        ctx.fillStyle = colorBlue;*/
-      ctx.fillStyle = 'hsl(240, 50%, 50%)';
+      var lightBlue = Math.round(Math.random() * 100);
+      var colorBlue = 'hsl(240, ' + lightBlue + '%, 50%)';
+      ctx.fillStyle = colorBlue;
     }
     ctx.fillRect(CLOUD_X + BORDER_GAP + (STATISTIC_GAP + BAR_WIDTH) * i, CLOUD_Y + (CLOUD_HEIGHT - BORDER_GAP - TEXT_HEIGHT), BAR_WIDTH, (barHeight * times[i]) / maxTime * -1);
     ctx.fillStyle = '#000';
