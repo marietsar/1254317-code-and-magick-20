@@ -6,6 +6,7 @@ var COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var wizards = [];
+var wizard = {};
 var setupBlock = document.querySelector('.setup');
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
@@ -18,19 +19,19 @@ function getRandomArrayItem(array) {
 
 setupBlock.classList.remove('hidden');
 
-function randomWizard() {
-  var wizard = {};
+function getRandomWizard() {
   wizard.name = getRandomArrayItem(NAMES) + ' ' + getRandomArrayItem(SURNAMES);
   wizard.coatColor = getRandomArrayItem(COAT_COLOR);
   wizard.eyesColor = getRandomArrayItem(EYES_COLOR);
-  wizards.push(wizard);
+  return wizard;
 }
 
 for (var i = 0; i < 4; i++) {
-  randomWizard();
+  getRandomWizard();
+  wizards.push(wizard);
 }
 
-var renderWizard = function (wizard) {
+var renderWizard = function () {
   var wizardElement = similarWizardTemplate.cloneNode(true);
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
